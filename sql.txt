@@ -1,0 +1,64 @@
+CREATE TABLE mecânico 
+( 
+ Id_Mecanico INT PRIMARY KEY auto_increment,  
+ cpf VARCHAR(20) unique , 
+ telefone VARCHAR(20)   
+ nome varchar(255),  
+ dataadmisao date,
+ email varchar(100) unique  
+); 
+
+CREATE TABLE serviços 
+( 
+ tempo_medio INT,  
+ descrição INT,  
+ nome_serviço INT,  
+ codserviço INT PRIMARY KEY,  
+); 
+
+CREATE TABLE veiculo 
+( 
+ modelo INT,  
+ placa INT PRIMARY KEY,  
+ cor INT,  
+ ano INT,  
+ idcliente INT,  
+); 
+
+CREATE TABLE ordemserviço 
+( 
+ problemarelatado INT,  
+ data_entrada INT,  
+ data_saida INT,  
+ valor_total INT,  
+ status INT,  
+ id_ordem INT PRIMARY KEY,  
+ idveiculo INT,  
+); 
+
+CREATE TABLE cliente 
+( 
+ idcliente INT PRIMARY KEY,  
+ cidade INT,  
+ email INT,  
+ telefone INT,  
+ nome INT,  
+); 
+
+CREATE TABLE sevrviços_mecanicos 
+( 
+ valorunitario INT,  
+ datainicio INT,  
+ datafinalizaçãoserviço INT,  
+ observação INT,  
+ cod_serviçomec INT PRIMARY KEY,  
+ Id_Mecanico INT PRIMARY KEY,  
+ codserviço INT PRIMARY KEY,  
+ id_ordem INT PRIMARY KEY,  
+); 
+
+ALTER TABLE veiculo ADD FOREIGN KEY(idcliente) REFERENCES cliente (idcliente)
+ALTER TABLE ordemserviço ADD FOREIGN KEY(idveiculo) REFERENCES veiculo (idveiculo)
+ALTER TABLE sevrviços_mecanicos ADD FOREIGN KEY(Id_Mecanico) REFERENCES mecânico (Id_Mecanico)
+ALTER TABLE sevrviços_mecanicos ADD FOREIGN KEY(codserviço) REFERENCES serviços (codserviço)
+ALTER TABLE sevrviços_mecanicos ADD FOREIGN KEY(id_ordem) REFERENCES ordemserviço (id_ordem)
