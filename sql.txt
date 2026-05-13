@@ -1,64 +1,252 @@
-CREATE TABLE mecânico 
-( 
- Id_Mecanico INT PRIMARY KEY auto_increment,  
- cpf VARCHAR(20) unique , 
- telefone VARCHAR(20)   
- nome varchar(255),  
- dataadmisao date,
- email varchar(100) unique  
-); 
+Microsoft Windows [versão 10.0.19045.5371]
+(c) Microsoft Corporation. Todos os direitos reservados.
 
-CREATE TABLE serviços 
-( 
- tempo_medio INT,  
- descrição INT,  
- nome_serviço INT,  
- codserviço INT PRIMARY KEY,  
-); 
+C:\Users\lab1-aluno>cd C:\xampp\mysql\bin
 
-CREATE TABLE veiculo 
-( 
- modelo INT,  
- placa INT PRIMARY KEY,  
- cor INT,  
- ano INT,  
- idcliente INT,  
-); 
+C:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
 
-CREATE TABLE ordemserviço 
-( 
- problemarelatado INT,  
- data_entrada INT,  
- data_saida INT,  
- valor_total INT,  
- status INT,  
- id_ordem INT PRIMARY KEY,  
- idveiculo INT,  
-); 
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
-CREATE TABLE cliente 
-( 
- idcliente INT PRIMARY KEY,  
- cidade INT,  
- email INT,  
- telefone INT,  
- nome INT,  
-); 
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-CREATE TABLE sevrviços_mecanicos 
-( 
- valorunitario INT,  
- datainicio INT,  
- datafinalizaçãoserviço INT,  
- observação INT,  
- cod_serviçomec INT PRIMARY KEY,  
- Id_Mecanico INT PRIMARY KEY,  
- codserviço INT PRIMARY KEY,  
- id_ordem INT PRIMARY KEY,  
-); 
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+5 rows in set (0.025 sec)
 
-ALTER TABLE veiculo ADD FOREIGN KEY(idcliente) REFERENCES cliente (idcliente)
-ALTER TABLE ordemserviço ADD FOREIGN KEY(idveiculo) REFERENCES veiculo (idveiculo)
-ALTER TABLE sevrviços_mecanicos ADD FOREIGN KEY(Id_Mecanico) REFERENCES mecânico (Id_Mecanico)
-ALTER TABLE sevrviços_mecanicos ADD FOREIGN KEY(codserviço) REFERENCES serviços (codserviço)
-ALTER TABLE sevrviços_mecanicos ADD FOREIGN KEY(id_ordem) REFERENCES ordemserviço (id_ordem)
+MariaDB [(none)]> CREATE DATABASE produtos;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> USE produtos;
+Database changed
+MariaDB [produtos]> CREATE TABLE categoria (
+    -> idcategoria int auto_increment primary key,
+    -> categoria varchar(100) not null,
+    -> descricao varchar(255) not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4
+MariaDB [produtos]> ByeCtrl-C -- exit!
+
+
+C:\xampp\mysql\bin>CREATE TABLE categoria (
+'CREATE' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\xampp\mysql\bin>    -> idcategoria int auto_increment primary key,
+'-' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\xampp\mysql\bin>    -> categoria varchar(100) not null,
+'-' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\xampp\mysql\bin>    -> descricao varchar(255) not null;CREATE TABLE categoria (
+'-' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\xampp\mysql\bin>    -> idcategoria int auto_increment primary key,
+'-' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\xampp\mysql\bin>    -> categoria varchar(100) not null,
+'-' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\xampp\mysql\bin>CREATE TABLE categoria (
+'CREATE' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\xampp\mysql\bin>create table categoria )
+'create' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\xampp\mysql\bin>create table categoria (
+'create' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 37
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| produtos           |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| produtos           |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> CREATE DATABASE produtos;
+ERROR 1007 (HY000): Can't create database 'produtos'; database exists
+MariaDB [(none)]> USE produtos;
+Database changed
+MariaDB [produtos]> CREATE TABLE categoria (
+    -> idcategoria int auto_increment primary key,
+    -> categoria varchar(100) not null,
+    -> descricao varchar(255) not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4
+MariaDB [produtos]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| produtos           |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [produtos]> CREATE DATABASE produtos;
+ERROR 1007 (HY000): Can't create database 'produtos'; database exists
+MariaDB [produtos]> USE produtos;
+Database changed
+MariaDB [produtos]> CREATE TABLE categoria (
+    -> idcategoria int auto_increment primary key,
+    -> categoria varchar(100) not null,
+    -> descricao varchar(255) not null;)
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+show databases' at line 1
+MariaDB [produtos]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| produtos           |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [produtos]> USE produtos;
+Database changed
+MariaDB [produtos]> CREATE DATABASE produtos;
+ERROR 1007 (HY000): Can't create database 'produtos'; database exists
+MariaDB [produtos]> CREATE TABLE categoria (
+    -> idcategoria int auto_increment primary key,
+    -> categoria varchar(100) not null,
+    -> descricao varchar(255) not null);
+Query OK, 0 rows affected (0.106 sec)
+
+MariaDB [produtos]> create table produto (
+    -> idproduto int auto_increment primary key,
+    -> produto varchar(200) not null,
+    -> preco decimal(10,2) not null,
+    -> qtd int not null,
+    -> datacadastro date not null,
+    -> ativo bit not null,
+    -> idcat int,
+    -> foreign key (idcat) references categoria (idcategoria));
+Query OK, 0 rows affected (0.033 sec)
+
+MariaDB [produtos]> rename table produto to produtos
+    -> ;
+Query OK, 0 rows affected (0.008 sec)
+
+MariaDB [produtos]> rename table produto to produtos;
+ERROR 1050 (42S01): Table 'produtos' already exists
+MariaDB [produtos]> alter table produtos change datacadastro data date not null;
+Query OK, 0 rows affected (0.037 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [produtos]> alter table produtos add observacao varchar(255) null;
+Query OK, 0 rows affected (0.009 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [produtos]> alter table4 categoria drop descricao;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table4 categoria drop descricao' at line 1
+MariaDB [produtos]> alter table categoria drop descricao;
+Query OK, 0 rows affected (0.010 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [produtos]> describe categoria;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| idcategoria | int(11)      | NO   | PRI | NULL    | auto_increment |
+| categoria   | varchar(100) | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+2 rows in set (0.017 sec)
+
+MariaDB [produtos]> insert into categoria (categoria) values
+    -> ('enlatados'),('lati8cínios')
+    -> ;
+Query OK, 2 rows affected (0.006 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [produtos]> insert into categoria (categoria) values
+    -> ('enlatados'),('laticínios'),('açougue'),('limpeza');
+Query OK, 4 rows affected (0.015 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [produtos]> describe produtos;
++------------+---------------+------+-----+---------+----------------+
+| Field      | Type          | Null | Key | Default | Extra          |
++------------+---------------+------+-----+---------+----------------+
+| idproduto  | int(11)       | NO   | PRI | NULL    | auto_increment |
+| produto    | varchar(200)  | NO   |     | NULL    |                |
+| preco      | decimal(10,2) | NO   |     | NULL    |                |
+| qtd        | int(11)       | NO   |     | NULL    |                |
+| data       | date          | NO   |     | NULL    |                |
+| ativo      | bit(1)        | NO   |     | NULL    |                |
+| idcat      | int(11)       | YES  | MUL | NULL    |                |
+| observacao | varchar(255)  | YES  |     | NULL    |                |
++------------+---------------+------+-----+---------+----------------+
+8 rows in set (0.014 sec)
+
+MariaDB [produtos]> insert into produtos(produto,preco,qtd,data,ativo,idcad,observacao) values
+    -> ('Acém Peça',39.99,50,'2026-05-13',1,3,'Sem gordura');
+ERROR 1054 (42S22): Unknown column 'idcad' in 'field list'
+MariaDB [produtos]> insert into produtos(produto,preco,qtd,data,ativo,idcat,observacao) values
+    -> ('Acém Peça',39.99,50,'2026-05-13',1,3,'Sem gordura');
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [produtos]> insert into produtos(produto,preco,qtd,data,ativo,idcad,observacao) values
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [produtos]> insert into produtos(produto,preco,qtd,data,ativo,idcat,observacao) values
+    -> ('Leite Condensado',15.99,80,'2026-05-13',1,2,'bem cremoso');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`produtos`.`produtos`, CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`idcat`) REFERENCES `categoria` (`idcategoria`))
+MariaDB [produtos]> insert into produtos(produto,preco,qtd,data,ativo,idcat,observacao) values
+    -> ('Leite Condensado',15.99,80,'2026-05-13',1,4,'bem cremoso');
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [produtos]>
